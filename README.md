@@ -1,5 +1,9 @@
 # difference_finder
 
+# Project Goal
+
+The goal of this project is to be able to produce the difference between two images, which are provided in the $.raw$ format, and present the output in the same format.
+
 ## Initial Thoughts
 
 Considering the conversation I had during the 2nd stage interview with the software engineers, and the emphasis on understanding big endian vs. little endian, my first assumption is that the data has been procured from a system that uses big endian byte sorting. So, when reading the information into my computer, which uses windows 11 on an AMD x86_64 chipset, I will be converting from big endian to little endian.
