@@ -15,3 +15,9 @@ Based on the assignment requirements, my second assumption is that I am not to u
 - I will create a GitHub first of all, to document and show my progress as i create this project.
 - I must consider how to implement a unit test at each and every stage of the development process.
 - I should review each section that has been implemented, and see if it can benefit from async programming.
+
+## Resources
+
+The following is a list of educational resources used to understand the required concepts for this project.
+
+- {https://www.eecs.umich.edu/courses/eecs380/HANDOUTS/cppBinaryFileIO-1.html} - How to read from a binary file.
