@@ -1,6 +1,6 @@
 # difference_finder
 
-# Project Goal
+## Project Goal
 
 The goal of this project is to be able to produce the difference between two images, which are provided in the $.raw$ format, and present the output in the same format.
 
