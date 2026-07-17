@@ -20,4 +20,4 @@ Based on the assignment requirements, my second assumption is that I am not to u
 
 The following is a list of educational resources used to understand the required concepts for this project.
 
-- {https://www.eecs.umich.edu/courses/eecs380/HANDOUTS/cppBinaryFileIO-1.html} - How to read from a binary file.
+- [https://www.eecs.umich.edu/courses/eecs380/HANDOUTS/cppBinaryFileIO-1.html] - How to read from a binary file.
