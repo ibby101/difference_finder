@@ -18,7 +18,7 @@ Based on the assignment requirements, my second assumption is that I am not to u
 
 ## Resources
 
-The following is a list of educational resources used to understand the required concepts for this project.
+The following is a list of resources used to understand the required concepts for this project, and choose the right tools.
 
 - https://www.eecs.umich.edu/courses/eecs380/HANDOUTS/cppBinaryFileIO-1.html - How to read from a binary file.
 - https://www.youtube.com/watch?v=pnoEgNt9B4E - Mike Shah's C++ Tutorials, Read and Write Binary Data in C++, Youtube
