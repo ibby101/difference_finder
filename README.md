@@ -25,4 +25,4 @@ The following is a list of resources used to understand the required concepts fo
 - https://cppreference.com/cpp/filesystem/exists - Using filesystem library to perform validation on files
 - https://www.w3schools.com/cpp/ref_fstream_ifstream.asp - fstream for reading raw files
 - https://google.github.io/googletest/primer.html - GoogleTest primer for understanding how to use testing syntax.
-- https://www.scs.stanford.edu/05au-cs240c/lab/i386/s02_02.htm - Learning about "High Bytes/ Low Bytes" and that 16 bits is considered a "Word"
+- https://www.scs.stanford.edu/05au-cs240c/lab/i386/s02_02.htm - Learning about "High Bytes/ Low Bytes" and 16 bits being a "Word"
