@@ -9,6 +9,6 @@ TEST(CheckFileExists, MissingFileException) {
 	std::string missingFile = "notTheFile.raw";
 
 	EXPECT_THROW({
-		// todo: add a function that will take in the file path and check if it exists.
+		ImageProcessor::validateFile(missingFile);
 		}, std::runtime_error);
 }
