@@ -27,4 +27,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="proj_contents\test_file.raw" />
+    <None Include="proj_contents\sino801_540x1200.raw" />
+    <None Include="proj_contents\sino800_540x1200.raw" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="proj_contents\Nordson Software Assessment.txt" />
+  </ItemGroup>
 </Project>

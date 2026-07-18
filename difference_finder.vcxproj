@@ -25,6 +25,14 @@
     <ClCompile Include="image_processor.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="proj_contents\sino800_540x1200.raw" />
+    <None Include="proj_contents\sino801_540x1200.raw" />
+    <None Include="proj_contents\test_file.raw" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="proj_contents\Nordson Software Assessment.txt" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
