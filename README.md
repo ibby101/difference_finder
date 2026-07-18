@@ -12,7 +12,7 @@ We can try to read in the raw data without this conversion, and see if it works 
 
 Based on the assignment requirements, my second assumption is that I am not to use any external libraries, like OpenCV, mainly to avoid compatibility issues when compiled by the assessor, but also to help the project maintain low overhead.
 
-- I will create a GitHub first of all, to document my progress as i create this project.
+- I will create a GitHub to document my progress as i create this project.
 - I must consider how to implement a unit test at each and every stage of the development process.
 - I should review each section that has been implemented, and see if it can be refactored using async programming.
 
