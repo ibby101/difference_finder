@@ -22,3 +22,4 @@ The following is a list of educational resources used to understand the required
 
 - https://www.eecs.umich.edu/courses/eecs380/HANDOUTS/cppBinaryFileIO-1.html - How to read from a binary file.
 - https://www.youtube.com/watch?v=pnoEgNt9B4E - Mike Shah's C++ Tutorials, Read and Write Binary Data in C++, Youtube
+- https://en.cppreference.com/cpp/container/vector - Choosing vectors since  elements are stored contiguously, as stated in documentation
