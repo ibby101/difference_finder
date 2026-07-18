@@ -41,3 +41,15 @@ TEST(CheckFile, CorrectFormatException) {
 		ImageProcessor::validateFile(corruptFile);
 		}, std::length_error);
 }
+
+TEST(LoadFile, CorrectInputException) {
+
+	std::string validFile = "test_data/valid_file.raw";
+
+	// using constant value named EXPECTED_ELEMENTS of 648,000 pixels for comparison
+
+	std::vector<uint16_t> buffer = ImageProcessor::loadRaw(validFile);
+
+	ASSERT_EQ(buffer.size(), ImageProcessor::EXPECTED_ELEMENTS)
+		<< "Buffer size doesn't match expected pixel count.\n"
+}
