@@ -2,41 +2,59 @@
 #include <filesystem>
 #include <iostream>
 #include <stdexcept>
+#include <fstream>
+#include <cstdint>
 
 
-bool ImageProcessor::validateFile(const std::string& file) {
-	std::filesystem::path thisPath(file);
+
+void ImageProcessor::validateFile(const std::string& filePath) {
+	std::filesystem::path thisPath(filePath);
 
 	// check variable stores the boolean result of 
 	// whether a path to a file exists or not
 
 	bool check = std::filesystem::exists(thisPath);
 
-	if (check) {
-		std::cout << "The path exists! Wonderful." << std::endl;
-	}
-	else {
-		throw std::runtime_error("File doesn't exist.\n");
+	if (!check) {
+		/*std::cout << "The path exists! Wonderful." << std::endl;*/
+		throw std::runtime_error("File " + filePath + " doesn't exist.\n");
 	}
 
 	// checking that the actual contents of the file is not empty
 
-	if (!std::filesystem::is_empty(thisPath)) {
-		std::cout << "This file contains stuff, good." << std::endl;
-	}
-	else {
-		throw std::invalid_argument("File has no contents.\n");
+	if (std::filesystem::is_empty(thisPath)) {
+		/*std::cout << "This file contains stuff, good." << std::endl;*/
+		throw std::invalid_argument("File " + filePath + " has no contents.\n");
 	}
 
 	// checking that the file is not corrupt, 
 	// comparing it against the expected byte size
 
-	const uintmax_t EXPECTED_SIZE = 540 * 1200 * sizeof(uint16_t);
-
-	if (std::filesystem::file_size(thisPath) != EXPECTED_SIZE) {
+	if (std::filesystem::file_size(thisPath) != EXPECTED_BYTES) {
 		throw std::length_error("This file size was not expected.\n");
 	}
+}
 
-	return true;
+std::vector<uint16_t> ImageProcessor::loadRaw(const std::string& filePath) {
+	validateFile(filePath);
 
+	std::vector<uint16_t> buffer(EXPECTED_ELEMENTS); // expected elements is 648,000 pixels
+
+	// now we open the file stream
+	std::ifstream file(filePath, std::ios::binary);
+
+	if (!file) {
+		throw std::runtime_error("Couldn't open file stream for: " + filePath);
+	}
+
+	file.read(reinterpret_cast<char*>(buffer.data()), EXPECTED_BYTES);
+
+	// we use fail() to catch a "short read"
+	// which means fewer bytes are available
+	// in the file as compared to the requested amount.
+
+	if (file.fail()) {
+		throw std::runtime_error("\nStream was corrupted or failed to read all expected bytes.\n");
+	}
+	return buffer;
 }

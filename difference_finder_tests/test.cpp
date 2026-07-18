@@ -29,7 +29,7 @@ TEST(CheckFile, EmptyFileException) {
 		}, std::invalid_argument);
 }
 
-// we expect the files that we read to be array of uint16_t
+// expecting the files that we read to be array of uint16_t
 // given that an image is 540x1200, we have a total of 648,000 pixels
 // our expected number of bytes is 648,000 pixels * 2 bytes = 1,296,000 bytes
 
@@ -46,10 +46,11 @@ TEST(LoadFile, CorrectInputException) {
 
 	std::string validFile = "test_data/valid_file.raw";
 
-	// using constant value named EXPECTED_ELEMENTS of 648,000 pixels for comparison
+	// EXPECTED_ELEMENTS is used to check if buffer size matches
 
 	std::vector<uint16_t> buffer = ImageProcessor::loadRaw(validFile);
 
 	ASSERT_EQ(buffer.size(), ImageProcessor::EXPECTED_ELEMENTS)
-		<< "Buffer size doesn't match expected pixel count.\n"
+		<< "Buffer size doesn't match expected pixel count.\n";
+
 }
