@@ -2,7 +2,7 @@
 
 ## Project Goal
 
-The goal of this project is to be able to produce the difference between two images, which are provided in the ```.raw``` format, and present the output in the same format.
+The goal of this project is to be able to produce the difference between two images, which are provided in the ```.raw``` format, and present the output in the same format. There is no metadata or any headers to provide further information about the structure of the information, simple operations can be performed to achieve the result needed.
 
 ## Initial Thoughts
 
