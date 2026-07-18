@@ -21,7 +21,7 @@ Based on the assignment requirements, my second assumption is that I am not to u
 The following is a list of resources used to understand the required concepts for this project, and choose the right tools.
 
 - https://www.eecs.umich.edu/courses/eecs380/HANDOUTS/cppBinaryFileIO-1.html - How to read from a binary file.
-- https://www.youtube.com/watch?v=pnoEgNt9B4E - Mike Shah's C++ Tutorials, Read and Write Binary Data in C++, Youtube.
+- https://www.youtube.com/watch?v=pnoEgNt9B4E - Mike Shah's C++ Tutorials, Read/Write Binary Data in C++, Youtube.
 - https://cppreference.com/cpp/filesystem/exists - Using filesystem library to perform validation on files
 - https://www.w3schools.com/cpp/ref_fstream_ifstream.asp - fstream for reading raw files
 - https://google.github.io/googletest/primer.html - GoogleTest primer for understanding how to use testing syntax.
