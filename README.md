@@ -26,3 +26,11 @@ The following is a list of resources used to understand the required concepts fo
 - https://www.w3schools.com/cpp/ref_fstream_ifstream.asp - fstream for reading raw files
 - https://google.github.io/googletest/primer.html - GoogleTest primer for understanding how to use testing syntax.
 - https://www.scs.stanford.edu/05au-cs240c/lab/i386/s02_02.htm - Learning about "High Bytes/ Low Bytes" and 16 bits being a "Word"
+
+## Bugs and Solutions
+
+When writing test cases for the difference calculation function, I expected that due to the characteristics of the unsigned 16 bit integer data type, doing any subtractions on a smaller number with a larger number would cause an underflow error, as `uint16_t` values cannot go into the negative numbers. However, I have now been made aware of the fact that C++ has a promotion rule, whereby any arithmetic operations carried out on multiple values, the data type will be "promoted" to `int` as anything smaller than this cannot be performed on.
+
+In order to "force" the test case to fail, I performed the difference operation on the elements within the test vectors without the absolute function, equating it to a variable of type `uint16_t`, then fed that variable into an `abs()` bracket to produce the underflow i was expecting. Doing this test has taught me something i wasn't expecting to learn about how the C++ compiler works under the hood.
+
+<img width="362" height="268" alt="image" src="https://github.com/user-attachments/assets/01aafc35-1584-4558-a4e9-0422dd9732ec" />
