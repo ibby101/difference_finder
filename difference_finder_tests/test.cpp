@@ -1,10 +1,6 @@
 #include "pch.h"
 #include "../image_processor.h"
 
-
-
-// check if the file exists at all
-
 TEST(CheckFile, MissingFileException) {
 
 	// creating a fake file path to check that the program throws a runtime error.
@@ -15,9 +11,6 @@ TEST(CheckFile, MissingFileException) {
 		ImageProcessor::validateFile(missingFile);
 		}, std::runtime_error);
 }
-
-// checking if the file is empty
-
 TEST(CheckFile, EmptyFileException) {
 
 	// path to an actual test file created
@@ -42,15 +35,30 @@ TEST(CheckFile, CorrectFormatException) {
 		}, std::length_error);
 }
 
+// since vectors are dynamically allocated,
+// there is a risk of them growing to accomodate
+// a number of elements that does not match
 TEST(LoadFile, CorrectInputException) {
 
 	std::string validFile = "test_data/valid_file.raw";
-
-	// EXPECTED_ELEMENTS is used to check if buffer size matches
 
 	std::vector<uint16_t> buffer = ImageProcessor::loadRaw(validFile);
 
 	ASSERT_EQ(buffer.size(), ImageProcessor::EXPECTED_ELEMENTS)
 		<< "Buffer size doesn't match expected pixel count.\n";
-
 }
+
+TEST(ProcessImage, IndenticalInputsCheck) {
+	std::vector<uint16_t> imageA = { 100, 200, 300 };
+	std::vector<uint16_t> imageB = { 100, 200, 300 };
+
+	std::vector<uint16_t> expectedVec = { 0, 0, 0 };
+
+	std::vector<uint16_t> result = ImageProcessor::calculateDiff(imageA, imageB);
+
+	ASSERT_EQ(result, expectedVec)
+		<< "Resulting vector does not match expected.\n";
+}
+
+
+
