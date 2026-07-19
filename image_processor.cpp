@@ -75,3 +75,28 @@ std::vector<uint16_t> ImageProcessor::calculateDiff(const std::vector<uint16_t>&
 
 	return output;
 }
+
+bool ImageProcessor::writeRaw(const std::vector<uint16_t> finalImage, const std::string& outputName) {
+
+	if (finalImage.size() != EXPECTED_ELEMENTS) {
+		return false;
+	}
+
+	// debug 
+
+	//std::filesystem::path cwd = std::filesystem::current_path();
+
+	//std::cout << "Current working directory: " << cwd << std::endl;
+
+	std::filesystem::path outputPath = outputName + ".raw";
+
+	std::ofstream outputFile(outputPath, std::ios::out | std::ios::binary);
+
+	if (!outputFile) {
+		return false;
+	}
+
+	outputFile.write(reinterpret_cast<const char*>(finalImage.data()), EXPECTED_BYTES);
+
+	return true;
+}
