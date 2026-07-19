@@ -59,6 +59,10 @@ std::vector<uint16_t> ImageProcessor::loadRaw(const std::string& filePath) {
 }
 
 std::vector<uint16_t> ImageProcessor::calculateDiff(const std::vector<uint16_t>& imageA, const std::vector<uint16_t>& imageB) {
+
+	if (imageA.size() != imageB.size()) {
+		throw std::invalid_argument("Vector size mismatch detected.\n");
+	}
 	
 	std::vector<uint16_t> output;
 
