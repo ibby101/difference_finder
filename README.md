@@ -16,7 +16,7 @@ Based on the assignment requirements, my second assumption is that I am not to u
 - I must consider how to implement a unit test at each and every stage of the development process.
 - I should review each section that has been implemented, and see if it can be refactored using async programming.
 
-## Bugs and Solutions
+## Unexpected Case
 
 When writing test cases for the difference calculation function, I expected that due to the characteristics of the unsigned 16 bit integer data type, doing any subtractions on a smaller number with a larger number would cause an underflow error, as `uint16_t` values cannot go into the negative numbers. However, I have now been made aware of the fact that C++ has a promotion rule, whereby any arithmetic operations carried out on multiple values, the data type will be "promoted" to `int` as anything smaller than this cannot be performed on. This means that we do not have to type-cast the variables or values to (int) before performing a subtraction.
 
