@@ -40,7 +40,6 @@ std::vector<uint16_t> ImageProcessor::loadRaw(const std::string& filePath) {
 
 	std::vector<uint16_t> buffer(EXPECTED_ELEMENTS); // expected elements is 648,000 pixels
 
-	// now we open the file stream
 	std::ifstream file(filePath, std::ios::binary);
 
 	if (!file) {
@@ -57,4 +56,17 @@ std::vector<uint16_t> ImageProcessor::loadRaw(const std::string& filePath) {
 		throw std::runtime_error("\nStream was corrupted or failed to read all expected bytes.\n");
 	}
 	return buffer;
+}
+
+std::vector<uint16_t> ImageProcessor::calculateDiff(const std::vector<uint16_t>& imageA, const std::vector<uint16_t>& imageB) {
+	
+	std::vector<uint16_t> output;
+
+	// assuming both vectors are the same size.
+	for (int i = 0; i < imageA.size(); ++i) {
+		uint16_t result = std::abs(imageA[i] - imageB[i]);
+		output.push_back(result);
+	}
+
+	return output;
 }
