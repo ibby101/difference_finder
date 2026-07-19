@@ -3,17 +3,13 @@
 
 TEST(CheckFile, MissingFileException) {
 
-	// creating a fake file path to check that the program throws a runtime error.
-
-	std::string missingFile = "notTheFile.raw";
+	std::string missingFile = "test_data/fake_file.raw";
 
 	EXPECT_THROW({
 		ImageProcessor::validateFile(missingFile);
 		}, std::runtime_error);
 }
 TEST(CheckFile, EmptyFileException) {
-
-	// path to an actual test file created
 
 	std::string emptyFile = "test_data/empty_file.raw";
 
@@ -35,8 +31,7 @@ TEST(CheckFile, CorrectFormatException) {
 		}, std::length_error);
 }
 
-// since vectors are dynamically allocated,
-// there is a risk of them growing to accomodate
+// risk of vectors growing to accomodate
 // a number of elements that does not match
 TEST(LoadFile, CorrectInputException) {
 
@@ -48,6 +43,9 @@ TEST(LoadFile, CorrectInputException) {
 		<< "Buffer size doesn't match expected pixel count.\n";
 }
 
+// testing difference calculation function
+// to ensure that if the same file is provided twice
+// resulting vectors will be filled with 0s
 TEST(ProcessImage, IndenticalInputsCheck) {
 	std::vector<uint16_t> imageA = { 100, 200, 300 };
 	std::vector<uint16_t> imageB = { 100, 200, 300 };
@@ -57,8 +55,34 @@ TEST(ProcessImage, IndenticalInputsCheck) {
 	std::vector<uint16_t> result = ImageProcessor::calculateDiff(imageA, imageB);
 
 	ASSERT_EQ(result, expectedVec)
-		<< "Resulting vector does not match expected.\n";
+		<< "output vector does not match expected.\n";
 }
+
+TEST(ProcessImage, ALargerThanBCheck) {
+	std::vector<uint16_t> imageA = { 50, 500, 1000 };
+	std::vector<uint16_t> imageB = { 10, 200, 900 };
+
+	std::vector<uint16_t> expectedVec = { 40, 300, 100 };
+
+	std::vector<uint16_t> result = ImageProcessor::calculateDiff(imageA, imageB);
+
+	ASSERT_EQ(result, expectedVec)
+		<< "output vector does not match expected.\n";
+}
+
+TEST(ProcessImage, BLargerThanACheck) {
+	std::vector<uint16_t> imageA = { 5 };
+	std::vector<uint16_t> imageB = { 10 };
+
+	std::vector<uint16_t> expectedVec = { 2 };
+
+	std::vector<uint16_t> result = ImageProcessor::calculateDiff(imageA, imageB);
+
+	ASSERT_EQ(result, expectedVec)
+		<< "output vector did not match expected.\n";
+}
+
+
 
 
 
