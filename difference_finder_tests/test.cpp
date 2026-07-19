@@ -43,6 +43,16 @@ TEST(LoadFile, CorrectInputException) {
 		<< "Buffer size doesn't match expected pixel count.\n";
 }
 
+TEST(ProcessImage, SameSizeCheck) {
+	std::vector<uint16_t> smallVector = { 1, 2, 3 };
+	std::vector<uint16_t> bigVector = { 1, 2, 3, 4, 5 };
+
+	EXPECT_THROW({
+		std::vector<uint16_t> outofBounds = ImageProcessor::calculateDiff(smallVector, bigVector);
+
+		}, std::invalid_argument);
+}
+
 // testing difference calculation function
 // to ensure that if the same file is provided twice
 // resulting vector will be filled with 0s
@@ -82,9 +92,18 @@ TEST(ProcessImage, BLargerThanACheck) {
 		<< "output vector did not match expected.\n";
 }
 
-TEST(WriteFile, CorrectOutputCheck) {
-
-}
+//TEST(WriteFile, FileExistsCheck) {
+//	std::vector<uint16_t> testVector = { 1, 2, 3, 4, 5 };
+//
+//	std::string expectedPath = "../outputs/write_file.raw"
+//
+//	bool successfulWrite = ImageProcessor::writeRaw(testVector, "write_file");
+//
+//	if (successfulWrite) {
+//		ImageProcessor::validateFile(expectedPath);
+//	}
+//
+//}
 
 
 
