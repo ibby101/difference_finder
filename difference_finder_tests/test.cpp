@@ -74,7 +74,7 @@ TEST(ProcessImage, BLargerThanACheck) {
 	std::vector<uint16_t> imageA = { 5 };
 	std::vector<uint16_t> imageB = { 10 };
 
-	std::vector<uint16_t> expectedVec = { 2 };
+	std::vector<uint16_t> expectedVec = { 5 };
 
 	std::vector<uint16_t> result = ImageProcessor::calculateDiff(imageA, imageB);
 
