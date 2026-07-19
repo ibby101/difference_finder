@@ -34,4 +34,4 @@ The following is a list of resources used to understand the required concepts fo
 - https://www.w3schools.com/cpp/ref_fstream_ifstream.asp - fstream for reading raw files
 - https://google.github.io/googletest/primer.html - GoogleTest primer for understanding how to use testing syntax.
 - https://www.scs.stanford.edu/05au-cs240c/lab/i386/s02_02.htm - Learning about "High Bytes/ Low Bytes" and 16 bits being a "Word"
-- https://en.cppreference.com/cpp/filesystem/path/operator_slash - A operator, part of `filesystem` library that concatenates the path to a directory
+- https://en.cppreference.com/cpp/filesystem/path/operator_slash - part of `std::filesystem::path`, appends a path segment using the platform's correct separator (no manual / or \ needed). Note: if the right-hand side is an absolute path, it replaces the whole path rather than appending it.
