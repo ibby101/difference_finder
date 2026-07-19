@@ -89,21 +89,17 @@ TEST(ProcessImage, BLargerThanACheck) {
 	std::vector<uint16_t> result = ImageProcessor::calculateDiff(imageA, imageB);
 
 	ASSERT_EQ(result, expectedVec)
-		<< "output vector did not match expected.\n";
+		<< "Output vector does not match expected.\n";
 }
 
-//TEST(WriteFile, FileExistsCheck) {
-//	std::vector<uint16_t> testVector = { 1, 2, 3, 4, 5 };
-//
-//	std::string expectedPath = "../outputs/write_file.raw"
-//
-//	bool successfulWrite = ImageProcessor::writeRaw(testVector, "write_file");
-//
-//	if (successfulWrite) {
-//		ImageProcessor::validateFile(expectedPath);
-//	}
-//
-//}
+TEST(WriteFile, FileExistsCheck) {
+	std::vector<uint16_t> testVector(ImageProcessor::EXPECTED_ELEMENTS);
+
+	bool successfulWrite = ImageProcessor::writeRaw(testVector, "../outputs/write_file");
+
+	ASSERT_TRUE(successfulWrite)
+		<< "Write operation was not successful.\n";
+}
 
 
 
