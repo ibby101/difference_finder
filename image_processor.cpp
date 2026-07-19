@@ -64,6 +64,7 @@ std::vector<uint16_t> ImageProcessor::calculateDiff(const std::vector<uint16_t>&
 
 	// assuming both vectors are the same size.
 	for (int i = 0; i < imageA.size(); ++i) {
+		//uint16_t difference = imageA[i] - imageB[i]; used this variable to test underflow
 		uint16_t result = std::abs(imageA[i] - imageB[i]);
 		output.push_back(result);
 	}
