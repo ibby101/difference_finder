@@ -29,7 +29,7 @@ The following is a list of resources used to understand the required concepts fo
 
 ## Bugs and Solutions
 
-When writing test cases for the difference calculation function, I expected that due to the characteristics of the unsigned 16 bit integer data type, doing any subtractions on a smaller number with a larger number would cause an underflow error, as `uint16_t` values cannot go into the negative numbers. However, I have now been made aware of the fact that C++ has a promotion rule, whereby any arithmetic operations carried out on multiple values, the data type will be "promoted" to `int` as anything smaller than this cannot be performed on.
+When writing test cases for the difference calculation function, I expected that due to the characteristics of the unsigned 16 bit integer data type, doing any subtractions on a smaller number with a larger number would cause an underflow error, as `uint16_t` values cannot go into the negative numbers. However, I have now been made aware of the fact that C++ has a promotion rule, whereby any arithmetic operations carried out on multiple values, the data type will be "promoted" to `int` as anything smaller than this cannot be performed on. This means that we do not have to type-cast the variables or values to (int) before performing a subtraction.
 
 In order to "force" the test case to fail, I performed the difference operation on the elements within the test vectors without the absolute function, equating it to a variable of type `uint16_t`, then fed that variable into an `abs()` bracket to produce the underflow i was expecting. Doing this test has taught me something i wasn't expecting to learn about how the C++ compiler works under the hood.
 
