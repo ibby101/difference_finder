@@ -31,7 +31,7 @@ TEST(CheckFile, CorrectFormatException) {
 		}, std::length_error);
 }
 
-// risk of vectors growing to accomodate
+// prevents risk of vectors growing to accomodate
 // a number of elements that does not match
 TEST(LoadFile, CorrectInputException) {
 
@@ -45,7 +45,7 @@ TEST(LoadFile, CorrectInputException) {
 
 // testing difference calculation function
 // to ensure that if the same file is provided twice
-// resulting vectors will be filled with 0s
+// resulting vector will be filled with 0s
 TEST(ProcessImage, IndenticalInputsCheck) {
 	std::vector<uint16_t> imageA = { 100, 200, 300 };
 	std::vector<uint16_t> imageB = { 100, 200, 300 };
@@ -80,6 +80,10 @@ TEST(ProcessImage, BLargerThanACheck) {
 
 	ASSERT_EQ(result, expectedVec)
 		<< "output vector did not match expected.\n";
+}
+
+TEST(WriteFile, CorrectOutputCheck) {
+
 }
 
 
