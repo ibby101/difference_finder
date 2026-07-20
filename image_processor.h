@@ -13,6 +13,5 @@ public:
 	static std::vector<uint16_t> loadRaw(const std::string& filePath);
 	static std::vector<uint16_t> calculateDiff(const std::vector<uint16_t>& imageA, const std::vector<uint16_t>& imageB);
 	static bool writeRaw(const std::vector<uint16_t> finalImage, const std::string& outputName);
-
 };
 
