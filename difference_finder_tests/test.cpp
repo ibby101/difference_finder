@@ -23,7 +23,6 @@ namespace ImageProcessorTests {
 	// expecting the files that we read to be array of uint16_t
 	// given that an image is 540x1200, we have a total of 648,000 pixels
 	// our expected number of bytes is 648,000 pixels * 2 bytes = 1,296,000 bytes
-
 	TEST(CheckFile, CorrectFormatException) {
 
 		std::string corruptFile = "test_data/corrupt_file.raw";
@@ -70,6 +69,14 @@ namespace ImageProcessorTests {
 			<< "output vector does not match expected.\n";
 	}
 
+	// ensuring that whichever order the vectors are placed,
+	// the result is the same.
+	TEST(ProcessImage, SymmetricOutputCheck) {
+		std::vector<uint16_t> imageA = { 50, 500, 1000 };
+		std::vector<uint16_t> imageB = { 10, 200, 900 };
+
+		EXPECT_EQ(ImageProcessor::calculateDiff(imageA, imageB), ImageProcessor::calculateDiff(imageB, imageA));
+	}
 	TEST(ProcessImage, ALargerThanBCheck) {
 		std::vector<uint16_t> imageA = { 50, 500, 1000 };
 		std::vector<uint16_t> imageB = { 10, 200, 900 };
@@ -97,7 +104,7 @@ namespace ImageProcessorTests {
 	TEST(WriteFile, FileWriteCheck) {
 		std::vector<uint16_t> testVector(ImageProcessor::EXPECTED_ELEMENTS);
 
-		bool successfulWrite = ImageProcessor::writeRaw(testVector, "../../outputs/write_file");
+		bool successfulWrite = ImageProcessor::writeRaw(testVector, "../../write_file");
 
 		ASSERT_TRUE(successfulWrite)
 			<< "Write operation was not successful.\n";
@@ -106,7 +113,7 @@ namespace ImageProcessorTests {
 	TEST(WriteFile, WrongSizeCheck) {
 		std::vector<uint16_t> smallVector(100);
 
-		EXPECT_FALSE(ImageProcessor::writeRaw(smallVector, "../../outputs/wrong_size_file"));
+		EXPECT_FALSE(ImageProcessor::writeRaw(smallVector, "wrong_size_file"));
 	}
 }
 
