@@ -82,6 +82,7 @@ bool ImageProcessor::writeRaw(const std::vector<uint16_t> finalImage, const std:
 	//std::filesystem::path cwd = std::filesystem::current_path();
 	//std::cout << "Current working directory: " << cwd << std::endl;
 
+
 	std::filesystem::path outputPath = outputName + ".raw";
 
 	if (outputPath.has_parent_path()) {
