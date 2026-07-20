@@ -82,13 +82,15 @@ bool ImageProcessor::writeRaw(const std::vector<uint16_t> finalImage, const std:
 		return false;
 	}
 
-	// debug 
-
+	// debug
 	//std::filesystem::path cwd = std::filesystem::current_path();
-
 	//std::cout << "Current working directory: " << cwd << std::endl;
 
 	std::filesystem::path outputPath = outputName + ".raw";
+
+	if (outputPath.has_parent_path()) {
+		std::filesystem::create_directories(outputPath.parent_path());
+	}
 
 	std::ofstream outputFile(outputPath, std::ios::out | std::ios::binary);
 
@@ -98,5 +100,5 @@ bool ImageProcessor::writeRaw(const std::vector<uint16_t> finalImage, const std:
 
 	outputFile.write(reinterpret_cast<const char*>(finalImage.data()), EXPECTED_BYTES);
 
-	return true;
+	return outputFile.good();
 }
