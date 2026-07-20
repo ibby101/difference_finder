@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <fstream>
 #include <stdlib.h>
+#include <filesystem>
 #include <iostream>
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "stb_image_write.h"
@@ -11,7 +12,14 @@
 int main(int argc, char** argv) {
 
 	if (argc != 4) {
-		std::cerr << "Expected Format:\n " << argv[0] <<  " <imageA.raw> <imageB.raw> <output_path> \n"
+
+		// reducing visual clutter in console
+		// by outputting the name of the executable only,
+		// instead of the absolute path.
+
+		std::string programName = std::filesystem::path(argv[0]).filename().string();
+
+		std::cerr << "\nExpected Format: " << programName <<  " <imageA.raw> <imageB.raw> <output_path> \n"
 			<< "NOTE: Please do not add the file suffix at the end, e.g., '.raw', as this will be appended by the system." << std::endl;
 		return 1;
 	}
