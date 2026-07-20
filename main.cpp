@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+//#define _CRT_SECURE_NO_WARNINGS
 #include "image_processor.h"
 #include <cstdint>
 #include <algorithm>
@@ -6,8 +6,8 @@
 #include <stdlib.h>
 #include <filesystem>
 #include <iostream>
-#define STB_IMAGE_WRITE_IMPLEMENTATION
-#include "stb_image_write.h"
+//#define STB_IMAGE_WRITE_IMPLEMENTATION
+//#include "stb_image_write.h"
 
 int main(int argc, char** argv) {
 
