@@ -10,8 +10,6 @@
 void ImageProcessor::validateFile(const std::string& filePath) {
 	std::filesystem::path thisPath(filePath);
 
-	// check variable stores the boolean result of 
-	// whether a path to a file exists or not
 
 	bool check = std::filesystem::exists(thisPath);
 
@@ -21,15 +19,13 @@ void ImageProcessor::validateFile(const std::string& filePath) {
 	}
 
 	// checking that the actual contents of the file is not empty
-
 	if (std::filesystem::is_empty(thisPath)) {
 		/*std::cout << "This file contains stuff, good." << std::endl;*/
 		throw std::invalid_argument("File " + filePath + " has no contents.\n");
 	}
 
-	// checking that the file is not corrupt, 
-	// comparing it against the expected byte size
 
+	// comparing it against the expected byte size
 	if (std::filesystem::file_size(thisPath) != EXPECTED_BYTES) {
 		throw std::length_error("This file size was not expected.\n");
 	}
