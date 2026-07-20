@@ -1,16 +1,22 @@
 //#define _CRT_SECURE_NO_WARNINGS
-//#include "image_processor.h"
-//#include <cstdint>
-//#include <algorithm>
-//#include <fstream>
-//#include <stdlib.h>
-//#include <iostream>
+#include "image_processor.h"
+#include <cstdint>
+#include <algorithm>
+#include <fstream>
+#include <stdlib.h>
+#include <iostream>
 //#define STB_IMAGE_WRITE_IMPLEMENTATION
 //#include "stb_image_write.h"
 
 int main(int argc, char** argv) {
 
+	if (argc != 4) {
+		std::cout << "Expected Format:\n " << argv[0] <<  " <imageA.raw> <imageB.raw> <output_path.raw>" << std::endl;
+	}
 
+
+	ImageProcessor::loadRaw(argv[1]);
+	ImageProcessor::loadRaw(argv[2]);
 
 	return 0;
 }
