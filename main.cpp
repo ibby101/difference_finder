@@ -12,16 +12,28 @@ int main(int argc, char** argv) {
 
 	if (argc != 4) {
 		std::cout << "Expected Format:\n " << argv[0] <<  " <imageA.raw> <imageB.raw> <output_path.raw>" << std::endl;
+		return -1;
 	}
+	
+	std::vector<uint16_t> imageA = ImageProcessor::loadRaw(argv[1]);
+	std::vector<uint16_t> imageB = ImageProcessor::loadRaw(argv[2]);
 
+	std::vector<uint16_t> result = ImageProcessor::calculateDiff(imageA, imageB);
 
-	ImageProcessor::loadRaw(argv[1]);
-	ImageProcessor::loadRaw(argv[2]);
+	bool success = ImageProcessor::writeRaw(result, argv[3]);
+
+	if (!success) {
+		std::cerr << "Failed to write to output file: " << argv[3] << std::endl;
+		return -1;
+	}
 
 	return 0;
 }
 
-// old main function that was used to write raw data to image files to see how they look
+
+
+
+// old main function that was used to write raw data to .png file to see how they look
 
 //int main() {
 //	std::vector<uint16_t> buffer = ImageProcessor::loadRaw("C:/Users/Ibroa/source/repos/difference_finder/proj_contents/sino801_540x1200.raw");
