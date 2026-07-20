@@ -97,10 +97,16 @@ namespace ImageProcessorTests {
 	TEST(WriteFile, FileWriteCheck) {
 		std::vector<uint16_t> testVector(ImageProcessor::EXPECTED_ELEMENTS);
 
-		bool successfulWrite = ImageProcessor::writeRaw(testVector, "../outputs/write_file");
+		bool successfulWrite = ImageProcessor::writeRaw(testVector, "../../outputs/write_file");
 
 		ASSERT_TRUE(successfulWrite)
 			<< "Write operation was not successful.\n";
+	}
+
+	TEST(WriteFile, WrongSizeCheck) {
+		std::vector<uint16_t> smallVector(100);
+
+		EXPECT_FALSE(ImageProcessor::writeRaw(smallVector, "../../outputs/wrong_size_file"));
 	}
 }
 
