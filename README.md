@@ -9,7 +9,7 @@ The goal of this project is to be able to produce the difference between two ima
 Clone or download a compressed folder containing the project and open in Visual Studio 2022.
 
 In order to run the test cases, and observe them using the test explorer, set the sub-solution "difference_finder_tests" as the startup project.
-https://github.com/user-attachments/assets/abfed499-b6f6-4aa2-9095-a07fd516f470
+https://github.com/user-attachments/assets/abfed499-b6f6-4aa2-9095-a07fd516f470.gif
 
 ## Resources
 
