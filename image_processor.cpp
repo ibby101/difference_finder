@@ -4,6 +4,7 @@
 #include <stdexcept>
 #include <fstream>
 #include <cstdint>
+#include <thread>
 
 
 
@@ -98,4 +99,17 @@ bool ImageProcessor::writeRaw(const std::vector<uint16_t> finalImage, const std:
 	outputFile.write(reinterpret_cast<const char*>(finalImage.data()), EXPECTED_BYTES);
 
 	return outputFile.good();
+}
+
+unsigned int ImageProcessor::queryThreadCount(const unsigned int threadCount) {
+	 
+	unsigned int output = 0;
+
+	if (threadCount < 2) {
+		output = 1;
+	}
+	else {
+		output = threadCount;
+	}
+	return output;
 }
