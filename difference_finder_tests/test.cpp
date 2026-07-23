@@ -44,6 +44,36 @@ namespace ImageProcessorTests {
 			<< "Buffer size doesn't match expected pixel count.\n";
 	}
 
+	TEST(QueryThreads, InputZeroCheck) {
+
+		unsigned int threadCount = 0;
+
+		unsigned int threadResult = ImageProcessor::queryThreadCount(threadCount);
+
+		ASSERT_EQ(1, threadResult)
+			<< "Input: " + std::to_string(threadCount) + " received in thread query, unexpected result output.\n";
+	}
+
+	TEST(QueryThreads, InputOneCheck) {
+
+		unsigned int threadCount = 1;
+
+		unsigned int threadResult = ImageProcessor::queryThreadCount(threadCount);
+
+		ASSERT_EQ(1, threadResult)
+			<< "Input: " + std::to_string(threadCount) + " received in thread query, unexpected result output.\n";
+	}
+
+	TEST(QueryThreads, InputNormalCheck) {
+
+		unsigned int threadCount = 4;
+
+		unsigned int threadResult = ImageProcessor::queryThreadCount(threadCount);
+
+		ASSERT_EQ(threadCount, threadResult)
+			<< "Input: " + std::to_string(threadCount) + " received in thread query, unexpected result output.\n";
+	}
+
 	TEST(ProcessImage, SameSizeCheck) {
 		std::vector<uint16_t> smallVector = { 1, 2, 3 };
 		std::vector<uint16_t> bigVector = { 1, 2, 3, 4, 5 };
@@ -100,8 +130,6 @@ namespace ImageProcessorTests {
 		ASSERT_EQ(result, expectedVec)
 			<< "Output vector does not match expected.\n";
 	}
-
-
 	TEST(WriteFile, FileWriteCheck) {
 		std::vector<uint16_t> testVector(ImageProcessor::EXPECTED_ELEMENTS);
 
@@ -115,36 +143,6 @@ namespace ImageProcessorTests {
 		std::vector<uint16_t> smallVector(100);
 
 		EXPECT_FALSE(ImageProcessor::writeRaw(smallVector, "wrong_size_file"));
-	}
-
-	TEST(QueryThreads, InputZeroCheck) {
-
-		unsigned int threadCount = 0;
-
-		unsigned int threadResult = ImageProcessor::queryThreadCount(threadCount);
-
-		ASSERT_EQ(1, threadResult)
-			<< "Input: " + std::to_string(threadCount) + " received in thread query, unexpected result output.\n";
-	}
-
-	TEST(QueryThreads, InputOneCheck) {
-
-		unsigned int threadCount = 1;
-
-		unsigned int threadResult = ImageProcessor::queryThreadCount(threadCount);
-
-		ASSERT_EQ(1, threadResult)
-			<< "Input: " + std::to_string(threadCount) + " received in thread query, unexpected result output.\n";
-	}
-
-	TEST(QueryThreads, InputNormalCheck) {
-
-		unsigned int threadCount = 4;
-
-		unsigned int threadResult = ImageProcessor::queryThreadCount(threadCount);
-
-		ASSERT_EQ(threadCount, threadResult)
-			<< "Input: " + std::to_string(threadCount) + " received in thread query, unexpected result output.\n";
 	}
 }
 
