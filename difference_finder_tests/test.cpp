@@ -101,10 +101,11 @@ namespace ImageProcessorTests {
 			<< "Output vector does not match expected.\n";
 	}
 
+
 	TEST(WriteFile, FileWriteCheck) {
 		std::vector<uint16_t> testVector(ImageProcessor::EXPECTED_ELEMENTS);
 
-		bool successfulWrite = ImageProcessor::writeRaw(testVector, "../../write_file");
+		bool successfulWrite = ImageProcessor::writeRaw(testVector, "../../outputs/write_file");
 
 		ASSERT_TRUE(successfulWrite)
 			<< "Write operation was not successful.\n";
@@ -114,6 +115,14 @@ namespace ImageProcessorTests {
 		std::vector<uint16_t> smallVector(100);
 
 		EXPECT_FALSE(ImageProcessor::writeRaw(smallVector, "wrong_size_file"));
+	}
+
+	TEST(QueryThreads, DeviceCheck) {
+
+		unsigned int threadCount = findThreadCount();
+
+		EXPECT_GT(1, threadCount)
+			<< "Current thread count too low for async\n";
 	}
 }
 
