@@ -46,9 +46,9 @@ namespace ImageProcessorTests {
 
 	TEST(QueryThreads, InputZeroCheck) {
 
-		unsigned int threadCount = 0;
+		size_t threadCount = 0;
 
-		unsigned int threadResult = ImageProcessor::queryThreadCount(threadCount);
+		size_t threadResult = ImageProcessor::queryThreadCount(threadCount);
 
 		ASSERT_EQ(1, threadResult)
 			<< "Input: " + std::to_string(threadCount) + " received in thread query, unexpected result output.\n";
@@ -56,9 +56,9 @@ namespace ImageProcessorTests {
 
 	TEST(QueryThreads, InputOneCheck) {
 
-		unsigned int threadCount = 1;
+		size_t threadCount = 1;
 
-		unsigned int threadResult = ImageProcessor::queryThreadCount(threadCount);
+		size_t threadResult = ImageProcessor::queryThreadCount(threadCount);
 
 		ASSERT_EQ(1, threadResult)
 			<< "Input: " + std::to_string(threadCount) + " received in thread query, unexpected result output.\n";
@@ -66,9 +66,9 @@ namespace ImageProcessorTests {
 
 	TEST(QueryThreads, InputNormalCheck) {
 
-		unsigned int threadCount = 4;
+		size_t threadCount = 4;
 
-		unsigned int threadResult = ImageProcessor::queryThreadCount(threadCount);
+		size_t threadResult = ImageProcessor::queryThreadCount(threadCount);
 
 		ASSERT_EQ(threadCount, threadResult)
 			<< "Input: " + std::to_string(threadCount) + " received in thread query, unexpected result output.\n";
