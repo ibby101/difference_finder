@@ -13,6 +13,7 @@ public:
 	static std::vector<uint16_t> loadRaw(const std::string& filePath);
 	static std::vector<uint16_t> calculateDiff(const std::vector<uint16_t>& imageA, const std::vector<uint16_t>& imageB);
 	static bool writeRaw(const std::vector<uint16_t> finalImage, const std::string& outputName);
-	static unsigned int queryThreadCount(const unsigned int threadCount);
+	static size_t queryThreadCount(const size_t threadCount);
+	static std::pair<size_t, size_t> workDistributor(size_t elementCount, size_t threadCount, size_t threadIndex);
 };
 
