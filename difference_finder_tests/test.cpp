@@ -74,6 +74,28 @@ namespace ImageProcessorTests {
 			<< "Input: " + std::to_string(threadCount) + " received in thread query, unexpected result output.\n";
 	}
 
+	// this test checks the result from a helper function
+	// that produces a starting index and count for
+	// each worker thread being used in async
+
+	TEST(QueryThreads, FindStartingIndexCheck) {
+
+		size_t elementCount = 10;
+		size_t threadCount = 3;
+		size_t threadIndex = 0;
+
+		// in this pair, (first) represents the starting index
+		// (second) represents the count at which the thread will 
+		// finish its task one index before.
+
+		std::pair<size_t, size_t> expectedOutput = {0, 3};
+
+		std::pair<size_t, size_t> helperResult = ImageProcessor::workDistributor(elementCount, threadCount, threadIndex);
+
+		ASSERT_EQ(expectedOutput, helperResult)
+			<< "Work distribution function result does not match expected output.\n";
+	}
+
 	TEST(ProcessImage, SameSizeCheck) {
 		std::vector<uint16_t> smallVector = { 1, 2, 3 };
 		std::vector<uint16_t> bigVector = { 1, 2, 3, 4, 5 };
