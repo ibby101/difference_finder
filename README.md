@@ -4,7 +4,7 @@
 
 The goal of this project is to be able to produce the difference between two images, which are provided in the ```.raw``` format, and present the output in the same format. There is no metadata or any headers to provide further information about the structure of the information, simple operations can be performed to achieve the result needed.
 
-## How to run project
+## How to run the Project
 
 Clone or download a compressed folder containing the project and open in Visual Studio 2022.
 
@@ -12,7 +12,6 @@ In order to run the test cases, and observe them using the test explorer, set th
 ![Set Startup Project Tutorial](./tutorial_gifs/startup_project_tut.gif)
 
 Then you can run the test cases in the test explorer tab.
-
 ![Run Test Cases](./tutorial_gifs/running_tests.gif)
 
 
