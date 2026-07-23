@@ -117,12 +117,34 @@ namespace ImageProcessorTests {
 		EXPECT_FALSE(ImageProcessor::writeRaw(smallVector, "wrong_size_file"));
 	}
 
-	TEST(QueryThreads, DeviceCheck) {
+	TEST(QueryThreads, InputZeroCheck) {
 
-		unsigned int threadCount = findThreadCount();
+		unsigned int threadCount = 0;
 
-		EXPECT_GT(1, threadCount)
-			<< "Current thread count too low for async\n";
+		unsigned int threadResult = ImageProcessor::queryThreadCount(threadCount);
+
+		ASSERT_EQ(1, threadResult)
+			<< "Input: " + std::to_string(threadCount) + " received in thread query, unexpected result output.\n";
+	}
+
+	TEST(QueryThreads, InputOneCheck) {
+
+		unsigned int threadCount = 1;
+
+		unsigned int threadResult = ImageProcessor::queryThreadCount(threadCount);
+
+		ASSERT_EQ(1, threadResult)
+			<< "Input: " + std::to_string(threadCount) + " received in thread query, unexpected result output.\n";
+	}
+
+	TEST(QueryThreads, InputNormalCheck) {
+
+		unsigned int threadCount = 4;
+
+		unsigned int threadResult = ImageProcessor::queryThreadCount(threadCount);
+
+		ASSERT_EQ(threadCount, threadResult)
+			<< "Input: " + std::to_string(threadCount) + " received in thread query, unexpected result output.\n";
 	}
 }
 
