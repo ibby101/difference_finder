@@ -1,20 +1,25 @@
 # difference_finder
 
-## Project Goal
+## Introduction
 
-The goal of this project is to be able to produce the difference between two images, which are provided in the ```.raw``` format, and present the output in the same format. There is no metadata or any headers to provide further information about the structure of the information, simple operations can be performed to achieve the result needed.
+The goal of this project is to be able to produce the difference between two images, which are provided in the ```.raw``` format, and present the output in the same `.raw` format. There is no metadata or any headers to provide further information about the structure of the data. Based on the assignment brief and the requirements for submission, This will be a console-based application will be a project developed using only C++ and Visual Studio 2022. No external libraries (e.g., OpenCV, GUI Libraries) will be used during the development process to ensure that dependency/include issues are minimised when the project is being run on different machines. 
 
 ## How to run the Project
 
+### Running Test Cases
+
 Clone or download a compressed folder containing the project and open in Visual Studio 2022.
 
-In order to run the test cases, and observe them using the test explorer, set the sub-solution "difference_finder_tests" as the startup project.
+In order to run the test cases and observe them using the test explorer, set the sub-solution "difference_finder_tests" as the startup project.
 
 ![Set Startup Project Tutorial](./tutorial_gifs/startup_project_tut.gif)
 
 Then you can run the test cases in the test explorer tab.
 
 ![Run Test Cases](./tutorial_gifs/running_tests.gif)
+
+### Running from Console
+
 
 
 ## Resources
