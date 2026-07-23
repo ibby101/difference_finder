@@ -101,9 +101,9 @@ bool ImageProcessor::writeRaw(const std::vector<uint16_t> finalImage, const std:
 	return outputFile.good();
 }
 
-unsigned int ImageProcessor::queryThreadCount(const unsigned int threadCount) {
+size_t ImageProcessor::queryThreadCount(const size_t threadCount) {
 	 
-	unsigned int output = 0;
+	size_t output = 0;
 
 	if (threadCount < 2) {
 		output = 1;
@@ -112,4 +112,10 @@ unsigned int ImageProcessor::queryThreadCount(const unsigned int threadCount) {
 		output = threadCount;
 	}
 	return output;
+}
+
+std::pair<size_t, size_t> ImageProcessor::workDistributor(size_t elementCount, size_t threadCount, size_t threadIndex) {
+
+	size_t dataChunk = elementCount / threadCount;
+
 }
