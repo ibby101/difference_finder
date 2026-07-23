@@ -11,7 +11,7 @@ Clone or download a compressed folder containing the project and open in Visual 
 In order to run the test cases, and observe them using the test explorer, set the sub-solution "difference_finder_tests" as the startup project.
 ![Set Startup Project Tutorial](./tutorial_gifs/startup_project_tut.gif)
 
-Then you can run the test cases in the test explorer tab.
+Then you can run the test cases in the test explorer tab.  
 ![Run Test Cases](./tutorial_gifs/running_tests.gif)
 
 
