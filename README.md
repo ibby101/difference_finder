@@ -35,6 +35,10 @@ Upon successful execution and output generation, a confirmation message is displ
 
 ![Successful Write](./tutorial_gifs/successful_write.gif)
 
+## Declaration of AI Usage
+
+AI was used during this project for guided learning and proofreading documentation. 
+
 ## Resources
 
 The following is a list of resources used to understand the required concepts for this project, and other tools that aided me during the development process.
