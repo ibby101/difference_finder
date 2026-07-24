@@ -96,6 +96,32 @@ namespace ImageProcessorTests {
 			<< "Work distribution function result does not match expected output.\n";
 	}
 
+	TEST(QueryThreads, FindSecondIndexCheck) {
+		size_t elementCount = 10;
+		size_t threadCount = 3;
+		size_t threadIndex = 1;
+
+		std::pair<size_t, size_t> expectedOutput = { 3, 3 };
+
+		std::pair<size_t, size_t> helperResult = ImageProcessor::workDistributor(elementCount, threadCount, threadIndex);
+
+		ASSERT_EQ(expectedOutput, helperResult)
+			<< "Work distribution function result does not match expected output.\n";
+	}
+
+	TEST(QueryThreads, FindThirdIndexCheck) {
+		size_t elementCount = 10;
+		size_t threadCount = 3;
+		size_t threadIndex = 2;
+
+		std::pair<size_t, size_t> expectedOutput = { 6, 4 };
+
+		std::pair<size_t, size_t> helperResult = ImageProcessor::workDistributor(elementCount, threadCount, threadIndex);
+
+		ASSERT_EQ(expectedOutput, helperResult)
+			<< "Work distribution function result does not match expected output.\n";
+	}
+
 	TEST(ProcessImage, SameSizeCheck) {
 		std::vector<uint16_t> smallVector = { 1, 2, 3 };
 		std::vector<uint16_t> bigVector = { 1, 2, 3, 4, 5 };
