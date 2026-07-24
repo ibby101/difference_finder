@@ -1,4 +1,6 @@
 //#define _CRT_SECURE_NO_WARNINGS
+//#define STB_IMAGE_WRITE_IMPLEMENTATION
+//#include "stb_image_write.h"
 #include "image_processor.h"
 #include <cstdint>
 #include <algorithm>
@@ -6,8 +8,7 @@
 #include <stdlib.h>
 #include <filesystem>
 #include <iostream>
-//#define STB_IMAGE_WRITE_IMPLEMENTATION
-//#include "stb_image_write.h"
+
 
 int main(int argc, char** argv) {
 
@@ -19,27 +20,33 @@ int main(int argc, char** argv) {
 
 		std::string programName = std::filesystem::path(argv[0]).filename().string();
 
-		std::cerr << "\nExpected Format: " << programName <<  " <imageA.raw> <imageB.raw> <output_path> \n"
-			<< "\nNOTE: Please do not add the file suffix at the end, e.g., '.raw', as this will be appended by the program.\n" << std::endl;
+		std::cerr << "\nExpected Format: " << programName << " <imageA.raw> <imageB.raw> <output_path> \n" << std::endl;
+			/*<< "\nNOTE: Please do not add the file suffix at the end, e.g., '.raw', as this will be appended by the program.\n" << std::endl;*/
 		return 1;
 	}
 	
-	std::vector<uint16_t> imageA = ImageProcessor::loadRaw(argv[1]);
-	std::vector<uint16_t> imageB = ImageProcessor::loadRaw(argv[2]);
+	try {
+		std::vector<uint16_t> imageA = ImageProcessor::loadRaw(argv[1]);
+		std::vector<uint16_t> imageB = ImageProcessor::loadRaw(argv[2]);
 
-	std::vector<uint16_t> result = ImageProcessor::calculateDiff(imageA, imageB);
+		std::vector<uint16_t> result = ImageProcessor::calculateDiff(imageA, imageB);
 
-	bool success = ImageProcessor::writeRaw(result, argv[3]);
+		bool success = ImageProcessor::writeRaw(result, argv[3]);
 
-	if (!success) {
-		std::cerr << "Failed to write to output file: " << argv[3] << std::endl;
-		return 1;
+		if (!success) {
+			std::cerr << "Failed to write to output file: " << argv[3] << std::endl;
+			return 1;
+		}
+		else {
+			std::cout << "Sucessfully written to output file: " << argv[3] << ".raw " << std::endl;
+			return 0;
+		}
 	}
-	else {
-		std::cout << "Sucessfully written to output file: " << argv[3] << ".raw " << std::endl;
+	catch (const std::exception& e) {
+		std::cerr << e.what() << std::endl;
 	}
 
-	return 0;
+	return 1;
 }
 
 
