@@ -38,7 +38,7 @@ int main(int argc, char** argv) {
 			return 1;
 		}
 		else {
-			std::cout << "Sucessfully written to output file: " << argv[3] << ".raw " << std::endl;
+			std::cout << "\nSucessfully written to output file: " << argv[3] << ".raw \n" << std::endl;
 			return 0;
 		}
 	}
