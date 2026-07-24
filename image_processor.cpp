@@ -111,7 +111,7 @@ size_t ImageProcessor::queryThreadCount(const size_t threadCount) {
 	return output;
 }
 
-std::pair<size_t, size_t> ImageProcessor::workDistributor(size_t elementCount, size_t threadCount, size_t threadIndex) {
+std::pair<size_t, size_t> ImageProcessor::workDistributor(const size_t elementCount, const size_t threadCount, const size_t threadIndex) {
 
 	size_t remainder = elementCount % threadCount;
 
@@ -138,4 +138,33 @@ void ImageProcessor::parallelDiff(const std::vector<uint16_t>& imageA, const std
 
 		outputVector[i] = diff;
 	}
+}
+
+std::vector<uint16_t> ImageProcessor::threadManager(const std::vector<uint16_t>& imageA, const std::vector<uint16_t>& imageB, const size_t threadCount) {
+
+	std::vector<uint16_t> outputVec(imageA.size());
+
+	if (threadCount < 2) {
+
+		outputVec = calculateDiff(imageA, imageB);
+
+		return outputVec;
+	}
+
+	std::vector<std::thread> threadIndexes;
+
+	std::pair threadData = { 0,0 };
+
+	for (size_t i = 0; i < threadCount; ++i) {
+		threadData = workDistributor(imageA.size(), threadCount, i);
+		std::thread t1(parallelDiff, std::ref(imageA), std::ref(imageB), threadData.first, threadData.second, std::ref(outputVec));
+		threadIndexes.push_back(std::move(t1));
+	}
+
+	for ( auto& thread : threadIndexes) {
+		thread.join();
+	}
+
+	return outputVec;
+
 }
