@@ -127,3 +127,15 @@ std::pair<size_t, size_t> ImageProcessor::workDistributor(size_t elementCount, s
 
 	return threadParam;
 }
+
+void ImageProcessor::parallelDiff(const std::vector<uint16_t>& imageA, const std::vector<uint16_t>& imageB,
+		const size_t startIndex, const size_t count, std::vector<uint16_t>& outputVector) {
+
+	size_t lim = startIndex + count;
+	for (size_t i = startIndex; i < lim; ++i) {
+
+		uint16_t diff = std::abs(imageA[i] - imageB[i]);
+
+		outputVector[i] = diff;
+	}
+}
