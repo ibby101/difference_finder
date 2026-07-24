@@ -25,7 +25,7 @@ The application requires four command-line arguments (including the executable p
 
 If the arguments do not match the expected format, the application displays a usage guide explaining the required parameters (two input `.raw` files and an output file name):
 
-<img width="797" height="200" alt="image" src="https://github.com/user-attachments/assets/5bb4b3c3-f1d2-4907-926a-2f8ebdad3542" />
+<img width="837" height="176" alt="image" src="https://github.com/user-attachments/assets/b39ec70c-2ecb-46c3-ad57-10bfb0e48fec" />
 
 Providing invalid file types or non-`.raw` files will trigger file validation, outputting a clear error message and exiting gracefully:
 
