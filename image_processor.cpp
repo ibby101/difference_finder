@@ -16,19 +16,17 @@ void ImageProcessor::validateFile(const std::string& filePath) {
 
 	if (!check) {
 		/*std::cout << "The path exists! Wonderful." << std::endl;*/
-		throw std::runtime_error("File " + filePath + " doesn't exist.\n");
+		throw std::runtime_error("\nFile " + filePath + " doesn't exist.\n");
 	}
 
-	// checking that the actual contents of the file is not empty
 	if (std::filesystem::is_empty(thisPath)) {
 		/*std::cout << "This file contains stuff, good." << std::endl;*/
-		throw std::invalid_argument("File " + filePath + " has no contents.\n");
+		throw std::invalid_argument("\nFile " + filePath + " has no contents.\n");
 	}
 
 
-	// comparing it against the expected byte size
 	if (std::filesystem::file_size(thisPath) != EXPECTED_BYTES) {
-		throw std::length_error("This file size was not expected.\n");
+		throw std::length_error("\nThis file size was not expected.\n");
 	}
 }
 
@@ -63,9 +61,8 @@ std::vector<uint16_t> ImageProcessor::calculateDiff(const std::vector<uint16_t>&
 	
 	std::vector<uint16_t> output;
 
-	// assuming both vectors are the same size.
 	for (size_t i = 0; i < imageA.size(); ++i) {
-		//uint16_t difference = imageA[i] - imageB[i]; used this variable to test underflow
+		//uint16_t difference = imageA[i] - imageB[i]; - used this variable to test underflow
 		uint16_t result = std::abs(imageA[i] - imageB[i]);
 		output.push_back(result);
 	}
@@ -116,6 +113,17 @@ size_t ImageProcessor::queryThreadCount(const size_t threadCount) {
 
 std::pair<size_t, size_t> ImageProcessor::workDistributor(size_t elementCount, size_t threadCount, size_t threadIndex) {
 
+	size_t remainder = elementCount % threadCount;
+
 	size_t dataChunk = elementCount / threadCount;
 
+	size_t startIndex = dataChunk * threadIndex;
+
+	if ((threadCount - 1) == threadIndex) {
+		dataChunk += remainder;
+	}
+
+	std::pair<size_t, size_t> threadParam = { startIndex, dataChunk };
+
+	return threadParam;
 }
