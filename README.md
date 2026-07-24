@@ -20,6 +20,19 @@ Then you can run the test cases in the test explorer tab.
 
 ### Running from Console
 
+The application requires 4 arguments, including the executable.
+
+If the arguments do not match the required format, a message should be displayed on the console explaining how to provide inputs. In this case, it expects two `.raw` files and a file name to write to:
+
+<img width="850" height="122" alt="image" src="https://github.com/user-attachments/assets/9ad3b495-ffc5-4c67-bf94-f0a356761db1" />
+
+Inputting wrong file types should output an error message and exit the application gracefully:
+
+<img width="1476" height="76" alt="image" src="https://github.com/user-attachments/assets/3c47590e-e0cc-43b8-ba26-2b7851256ff8" />
+
+Successful usage of the application will return a confirmation message:
+
+![Succesful Write](./tutorial_gifs/successful_write.gif)
 
 
 ## Resources
@@ -28,13 +41,13 @@ The following is a list of resources used to understand the required concepts fo
 
 - https://www.eecs.umich.edu/courses/eecs380/HANDOUTS/cppBinaryFileIO-1.html - how to read from a binary file.
 - https://www.youtube.com/watch?v=pnoEgNt9B4E - Mike Shah's C++ Tutorials, Read/Write Binary Data in C++, Youtube.
-- https://cppreference.com/cpp/filesystem/exists - using filesystem library to perform validation on files
-- https://www.w3schools.com/cpp/ref_fstream_ifstream.asp - fstream for reading raw files
+- https://cppreference.com/cpp/filesystem/exists - using filesystem library to perform validation on files.
+- https://www.w3schools.com/cpp/ref_fstream_ifstream.asp - fstream for reading raw files.
 - https://google.github.io/googletest/primer.html - GoogleTest primer for understanding how to use testing syntax.
-- https://www.scs.stanford.edu/05au-cs240c/lab/i386/s02_02.htm - learning about "High Bytes/ Low Bytes" and 16 bits being a "Word"
+- https://www.scs.stanford.edu/05au-cs240c/lab/i386/s02_02.htm - learning about "High Bytes/ Low Bytes" and 16 bits being a "Word".
 - https://en.cppreference.com/cpp/filesystem/path/operator_slash - part of `std::filesystem::path`, appends a path segment using the platform's correct separator.
-- https://en.cppreference.com/cpp/thread/thread/hardware_concurrency - a useful tool in the `<thread>` library, outputs the number of concurrent threads the active system can support
-
+- https://en.cppreference.com/cpp/thread/thread/hardware_concurrency - a useful tool in the `<thread>` library, outputs the number of concurrent threads the active system can support.
+- https://www.geeksforgeeks.org/cpp/std-iota-in-cpp/ - std::iota to help fill a vector with values for testing.
 
 
 
