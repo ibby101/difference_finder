@@ -15,5 +15,6 @@ public:
 	static bool writeRaw(const std::vector<uint16_t> finalImage, const std::string& outputName);
 	static size_t queryThreadCount(const size_t threadCount);
 	static std::pair<size_t, size_t> workDistributor(size_t elementCount, size_t threadCount, size_t threadIndex);
+	static void parallelDiff(const std::vector<uint16_t>& imageA, const std::vector<uint16_t>& imageB, const size_t startIndex, const size_t count, const std::vector<uint16_t>& outputVector);
 };
 
