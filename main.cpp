@@ -7,6 +7,7 @@
 #include <fstream>
 #include <stdlib.h>
 #include <filesystem>
+#include <thread>
 #include <iostream>
 
 
@@ -29,7 +30,11 @@ int main(int argc, char** argv) {
 		std::vector<uint16_t> imageA = ImageProcessor::loadRaw(argv[1]);
 		std::vector<uint16_t> imageB = ImageProcessor::loadRaw(argv[2]);
 
-		std::vector<uint16_t> result = ImageProcessor::calculateDiff(imageA, imageB);
+		size_t availableThreads = std::thread::hardware_concurrency();
+
+		size_t threadCount = ImageProcessor::queryThreadCount(availableThreads);
+
+		std::vector<uint16_t> result = ImageProcessor::threadManager(imageA, imageB, threadCount);
 
 		bool success = ImageProcessor::writeRaw(result, argv[3]);
 
