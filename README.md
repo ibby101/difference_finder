@@ -2,38 +2,38 @@
 
 ## Introduction
 
-The goal of this project is to be able to produce the difference between two images, which are provided in the ```.raw``` format, and present the output in the same `.raw` format. There is no metadata or any headers to provide further information about the structure of the data. Based on the assignment brief and the requirements for submission, This will be a console-based application will be a project developed using only C++ and Visual Studio 2022. No external libraries (e.g., OpenCV, GUI Libraries) will be used during the development process to ensure that dependency/include issues are minimised when the project is being run on different machines. 
+The goal of this project is to calculate the pixel difference between two images provided in `.raw` format and output the result in the same `.raw` format. The files contain no metadata or headers to specify data structure. 
 
-## How to run the Project
+Based on the assignment brief, this console-based application was developed using only standard C++ and Visual Studio 2022. No external dependencies (e.g. OpenCV, GUI frameworks) were used to ensure seamless compilation across different machines.
+
+## How to Run the Project
 
 ### Running Test Cases
 
-Clone or download a compressed folder containing the project and open in Visual Studio 2022.
-
-In order to run the test cases and observe them using the test explorer, set the sub-solution "difference_finder_tests" as the startup project.
+1. Clone the repository or download and extract the source archive, then open the solution in Visual Studio 2022.
+2. In the Solution Explorer, right-click **difference_finder_tests** and select **Set as Startup Project**.
 
 ![Set Startup Project Tutorial](./tutorial_gifs/startup_project_tut.gif)
 
-Then you can run the test cases in the test explorer tab.
+3. Run the unit tests via the Test Explorer tab (`Test` > `Test Explorer`).
 
 ![Run Test Cases](./tutorial_gifs/running_tests.gif)
 
 ### Running from Console
 
-The application requires 4 arguments, including the executable.
+The application requires four command-line arguments (including the executable path).
 
-If the arguments do not match the required format, a message should be displayed on the console explaining how to provide inputs. In this case, it expects two `.raw` files and a file name to write to:
+If the arguments do not match the expected format, the application displays a usage guide explaining the required parameters (two input `.raw` files and an output file name):
 
-<img width="850" height="122" alt="image" src="https://github.com/user-attachments/assets/9ad3b495-ffc5-4c67-bf94-f0a356761db1" />
+<img width="850" height="122" alt="Invalid arguments error message" src="https://github.com/user-attachments/assets/9ad3b495-ffc5-4c67-bf94-f0a356761db1" />
 
-Inputting wrong file types should output an error message and exit the application gracefully:
+Providing invalid file types or non-`.raw` files will trigger file validation, outputting a clear error message and exiting gracefully:
 
-<img width="1476" height="76" alt="image" src="https://github.com/user-attachments/assets/3c47590e-e0cc-43b8-ba26-2b7851256ff8" />
+<img width="1476" height="76" alt="Invalid file type error message" src="https://github.com/user-attachments/assets/3c47590e-e0cc-43b8-ba26-2b7851256ff8" />
 
-Successful usage of the application will return a confirmation message:
+Upon successful execution and output generation, a confirmation message is displayed:
 
-![Succesful Write](./tutorial_gifs/successful_write.gif)
-
+![Successful Write](./tutorial_gifs/successful_write.gif)
 
 ## Resources
 
