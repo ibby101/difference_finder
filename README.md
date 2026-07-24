@@ -32,10 +32,7 @@ Providing invalid file types or non-`.raw` files will trigger file validation, o
 <img width="1476" height="76" alt="Invalid file type error message" src="https://github.com/user-attachments/assets/3c47590e-e0cc-43b8-ba26-2b7851256ff8" />
 
 Upon successful execution and output generation, a confirmation message is displayed:
-
-<p align="center">
-  <img src="./tutorial_gifs/successful_write.gif" alt="Successful Write">
-</p>
+![Successful Write](./tutorial_gifs/successful_write.gif)
 
 ## Declaration of AI Usage
 
