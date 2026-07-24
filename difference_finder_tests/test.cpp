@@ -141,6 +141,20 @@ namespace ImageProcessorTests {
 			<< "\nParallel computation result not matching expected result.\n";
 	}
 
+	TEST(ProcessParallel, SingleThreadOutputCheck) {
+
+		std::vector<uint16_t> vec1 = { 1,2,3,4,5 };
+		std::vector<uint16_t> vec2 = { 2,3,4,5,6 };
+
+		size_t threadCount = 1;
+
+		std::vector<uint16_t> output = ImageProcessor::threadManager(vec1, vec2, threadCount);
+		std::vector<uint16_t> output2 = ImageProcessor::calculateDiff(vec1, vec2);
+
+		ASSERT_EQ(output, output2)
+			<< "\nUnexpected result received from thread manager.\n";
+	}
+
 	TEST(ProcessImage, SameSizeCheck) {
 		std::vector<uint16_t> smallVector = { 1, 2, 3 };
 		std::vector<uint16_t> bigVector = { 1, 2, 3, 4, 5 };
