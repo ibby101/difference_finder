@@ -41,7 +41,7 @@ AI was used during this project for guided learning and proofreading documentati
 
 ## Resources
 
-The following is a list of resources used to understand the required concepts for this project, and other tools that aided me during the development process.
+The following is a list of resources used to understand the required concepts for this project, tools that aided me during the development process, and other features of C++ STL that I've picked up along the way.
 
 - https://boqian.weebly.com/c-programming.html - Bo Qian's C++ Programming Tutorials.
 - https://www.eecs.umich.edu/courses/eecs380/HANDOUTS/cppBinaryFileIO-1.html - how to read from a binary file.
