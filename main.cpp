@@ -21,7 +21,7 @@ int main(int argc, char** argv) {
 
 		std::string programName = std::filesystem::path(argv[0]).filename().string();
 
-		std::cerr << "\nExpected Format: " << programName << " <imageA.raw> <imageB.raw> <output_path> \n" << std::endl;
+		std::cerr << "\nExpected Format: " << programName << " <imageA.raw> <imageB.raw> <file_name> \n" << std::endl;
 			/*<< "\nNOTE: Please do not add the file suffix at the end, e.g., '.raw', as this will be appended by the program.\n" << std::endl;*/
 		return 1;
 	}
