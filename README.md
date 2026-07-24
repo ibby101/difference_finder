@@ -33,7 +33,7 @@ Providing invalid file types or non-`.raw` files will trigger file validation, o
 
 Upon successful execution and output generation, a confirmation message is displayed:
 
-![Successful Write](./tutorial_gifs/successful_write.gif)
+<img src="./tutorial_gifs/successful_write.gif" alt="Successful Write" width="1000">
 
 ## Declaration of AI Usage
 
