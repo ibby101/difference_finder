@@ -43,6 +43,7 @@ AI was used during this project for guided learning and proofreading documentati
 
 The following is a list of resources used to understand the required concepts for this project, and other tools that aided me during the development process.
 
+- https://boqian.weebly.com/c-programming.html - Bo Qian's C++ Programming Tutorials.
 - https://www.eecs.umich.edu/courses/eecs380/HANDOUTS/cppBinaryFileIO-1.html - how to read from a binary file.
 - https://www.youtube.com/watch?v=pnoEgNt9B4E - Mike Shah's C++ Tutorials, Read/Write Binary Data in C++, Youtube.
 - https://cppreference.com/cpp/filesystem/exists - using filesystem library to perform validation on files.
