@@ -122,6 +122,25 @@ namespace ImageProcessorTests {
 			<< "Work distribution function result does not match expected output.\n";
 	}
 
+	TEST(ProcessParallel, NonZeroOffsetCheck) {
+
+		std::vector<uint16_t> tVector1 = { 0, 1, 2, 3, 4, 5 };
+		std::vector<uint16_t> tVector2 = { 5, 4, 3, 2, 1, 0 };
+
+		size_t count = 2;
+		size_t startIndex = 2;
+
+		std::vector<uint16_t> outputVec(6);
+
+		ImageProcessor::parallelDiff(tVector1, tVector2, startIndex, count, outputVec);
+
+		// checking the result of the calculation for this specific index slice
+		std::vector<uint16_t> expecVec = { 0, 0, 1, 1, 0, 0 };
+
+		ASSERT_EQ(expecVec, outputVec)
+			<< "\nParallel computation result not matching expected result.\n";
+	}
+
 	TEST(ProcessImage, SameSizeCheck) {
 		std::vector<uint16_t> smallVector = { 1, 2, 3 };
 		std::vector<uint16_t> bigVector = { 1, 2, 3, 4, 5 };
