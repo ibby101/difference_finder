@@ -33,9 +33,9 @@ The sample `.raw` files were visually inspected (converted to `.png` via `stb_im
 
 ### Downloads & Archive Releases
 
-[Sequential Solution](https://github.com/ibby101/difference_finder/releases/download/v1.0.0/diff_sequential_sln.zip)
+[Sequential Solution](https://github.com/ibby101/difference_finder/releases/download/submission-release/diff_sequential_sln.zip)
 
-[Parallel Solution](https://github.com/ibby101/difference_finder/releases/download/v1.0.0/diff_parallel_sln.zip)
+[Parallel Solution](https://github.com/ibby101/difference_finder/releases/download/submission-release/diff_parallel_sln.zip)
 
 ### Running Test Cases
 
