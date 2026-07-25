@@ -7,8 +7,8 @@ A C++ console application that calculates the pixel-wise difference between two 
 The input `.raw` files contain no metadata or headers, just a flat buffer of 16-bit unsigned pixel values. This project reads two such files, computes the absolute difference between corresponding pixels, and writes the result in the same format.
 
 Two implementations are included:
-- **Sequential**: a straightforward single-threaded diff calculation.
-- **Parallel**: the same calculation, distributed across multiple threads.
+- **Sequential**: a single-threaded diff calculation.
+- **Parallel**: diff calculation distributed across multiple threads.
 
 The application detects the number of threads available on the host machine and falls back to the sequential path if multithreading wouldn't help (e.g. on a single-core system).
 
