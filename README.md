@@ -31,6 +31,12 @@ The sample `.raw` files were visually inspected (converted to `.png` via `stb_im
 
 ## How to Run the Project
 
+### Downloads & Archive Releases
+
+[Sequential Solution](https://github.com/ibby101/difference_finder/releases/download/v1.0.0/diff_sequential_sln.zip)
+
+[Parallel Solution](https://github.com/ibby101/difference_finder/releases/download/v1.0.0/diff_parallel_sln.zip)
+
 ### Running Test Cases
 
 1. Extract the source archive and open the solution in Visual Studio 2022.
