@@ -1,17 +1,43 @@
-# difference_finder
+# Difference Finder
 
-## Introduction
+A C++ console application that calculates the pixel-wise difference between two `.raw` images and writes the result to a new `.raw` file.
 
-The goal of this project is to calculate the pixel difference between two images provided in `.raw` format and output the result in the same `.raw` format. The files contain no metadata or headers to specify data structure. 
+## Overview
 
-Based on the assignment brief, this console-based application was developed using only standard C++ and Visual Studio 2022. No external dependencies (e.g. OpenCV, GUI frameworks) were used to ensure seamless compilation across different machines.
+The input `.raw` files contain no metadata or headers, just a flat buffer of 16-bit unsigned pixel values. This project reads two such files, computes the absolute difference between corresponding pixels, and writes the result in the same format.
+
+Two implementations are included:
+- **Sequential**: a straightforward single-threaded diff calculation.
+- **Parallel**: the same calculation, distributed across multiple threads for better performance on larger images.
+
+The application detects the number of threads available on the host machine and falls back to the sequential path if multithreading wouldn't help (e.g. on a single-core system).
+
+Built using only standard C++ and Visual Studio 2022. No external dependencies were used, to keep the project easy to build on any machine with a standard C++ toolchain.
+
+## How It Works
+
+1. **Validate and load**: each input file is checked for existence, non-emptiness, and correct byte size before being read into memory as a buffer of `uint16_t` pixel values.
+2. **Determine thread count**: the application queries the system for the number of available hardware threads. If that number is unreliable or too low (0 or 1), it falls back to a single-threaded run.
+3. **Compute the difference**:
+   - *Sequential path:* a single loop computes `abs(pixelA - pixelB)` for every pixel.
+   - *Parallel path:* the image is split into contiguous chunks, one per thread. Each thread computes the diff for its own chunk and writes directly into its slice of a shared output buffer, so no locking is required, as no two threads ever write to the same index.
+4. **Write the result**: the output buffer is written to a new `.raw` file, with the output directory created automatically if it doesn't already exist.
+
+Errors at any stage (missing files, corrupt data, mismatched sizes, failed writes) are caught and reported with a clear message, and the program exits with a non-zero status rather than crashing.
+
+## Endianness
+
+The sample `.raw` files were visually inspected (converted to `.png` via `stb_image_write`, both in their original byte order and with a manual 16-bit byte-swap applied) to check pixel interpretation. The unmodified data produced a coherent image, while the byte-swapped version showed clear, unnatural high-contrast noise. The data was therefore confirmed to be in native little-endian format, requiring no byte-swapping.
 
 ## How to Run the Project
 
 ### Running Test Cases
 
-1. Clone the repository or download and extract the source archive, then open the solution in Visual Studio 2022.
-2. In the Solution Explorer, right-click **difference_finder_tests** and select **Set as Startup Project**.
+1. Extract the source archive and open the solution in Visual Studio 2022.
+2. In Solution Explorer, right-click **difference_finder_tests** and select **Set as Startup Project**.
+3. Run the tests via **Test > Test Explorer**.
+
+The suite covers file validation, sequential diff correctness (including boundary and symmetry checks), thread-count fallback logic, work-distribution maths (including remainder handling), and parallel diff correctness, verified by comparing parallel output against the trusted sequential result.
 
 ![Set Startup Project Tutorial](./tutorial_gifs/startup_project_tut.gif)
 
@@ -31,7 +57,8 @@ Providing invalid file types or non-`.raw` files will trigger file validation, o
 
 <img width="1476" height="76" alt="Invalid file type error message" src="https://github.com/user-attachments/assets/3c47590e-e0cc-43b8-ba26-2b7851256ff8" />
 
-Upon successful execution and output generation, a confirmation message is displayed:
+On success, a confirmation message is printed showing the output file that was written.
+
 ![Successful Write](./tutorial_gifs/successful_write.gif)
 
 ## Declaration of AI Usage
