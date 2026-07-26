@@ -26,6 +26,7 @@ int main(int argc, char** argv) {
 		std::vector<uint16_t> imageA = ImageProcessor::loadRaw(argv[1]);
 		std::vector<uint16_t> imageB = ImageProcessor::loadRaw(argv[2]);
 
+		// querying device cpu thread capacity	
 		size_t availableThreads = std::thread::hardware_concurrency();
 
 		size_t threadCount = ImageProcessor::queryThreadCount(availableThreads);
